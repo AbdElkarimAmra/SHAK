@@ -16,8 +16,8 @@ import { Button } from "@/components/ui/button"
 export default function Homepage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen text-center px-4">
-      <h1 className="text-4xl font-bold mb-4">Welcome to SHAK 💸</h1>
-      <p className="text-lg text-red-600 mb-8 max-w-xl">
+      <h1 className="text-4xl text-orange-500 font-bold mb-4">Welcome to SHAK 💸</h1>
+      <p className="text-lg text-orange-500 mb-8 max-w-xl">
         "Do not save what is left after spending, but spend what is left after saving." 
         – Warren Buffett
       </p>
@@ -43,10 +43,10 @@ export default function Homepage() {
 
             <div className="grid gap-2">
               <div className="flex items-center justify-between">
-                <Label className="text-blue-600" htmlFor="password">password</Label>
+                <Label className="text-orange-500" htmlFor="password">password</Label>
                 <a
                   href="#"
-                  className="text-sm text-green-600 hover:underline"
+                  className="text-sm text-orange-600 hover:underline"
                 >
                   Forgot password?
                 </a>
