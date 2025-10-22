@@ -5,36 +5,37 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { Link, useNavigate } from "react-router-dom"
-import { useForm } from "react-hook-form"
-
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export default function Homepage() {
-
-  
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { values }} = useForm({
-    email: "",
-    password: "",
+
+  const { register, handleSubmit, formState: { isSubmitting } } = useForm({
+    defaultValues: { email: "", password: "" },
   });
 
-    function handleLogin(values) {
-        const res = fetch(import.meta.env.VITE_API_URL + "/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: values.email,
-                password: values.password,
-            }),
-        });
+  // --- TEMPORARY DEMO LOGIN ---
+  function handleLogin(values) {
+    const DEMO_EMAIL = "demo@shak.test";
+    const DEMO_PASSWORD = "password123";
+
+    if (
+      values?.email?.toLowerCase?.() === DEMO_EMAIL &&
+      values?.password === DEMO_PASSWORD
+    ) {
+      localStorage.setItem("authToken", "demo-session-token");
+      navigate("/dashboard"); // ✅ redirects after login
+    } else {
+      alert("Demo login failed — use demo@shak.test / password123");
     }
+  }
+
   function onSubmit(value) {
-    
-    console.log(value);
     handleLogin(value);
   }
 
@@ -42,7 +43,7 @@ export default function Homepage() {
     <main className="flex flex-col items-center justify-center min-h-screen bg-orange-50 text-center px-4">
       <h1 className="text-4xl font-bold mb-3 text-[#F46B2E]">Welcome to SHAK 💸</h1>
       <p className="text-lg text-gray-700 mb-8 max-w-xl italic">
-        "Do not save what is left after spending, but spend what is left after saving." 
+        "Do not save what is left after spending, but spend what is left after saving."
         <br />– Warren Buffett
       </p>
 
@@ -62,7 +63,7 @@ export default function Homepage() {
                 {...register("email")}
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="demo@shak.test"
                 required
                 className="focus:ring-2 focus:ring-[#F46B2E] focus:border-[#F46B2E]"
               />
@@ -82,6 +83,7 @@ export default function Homepage() {
                 {...register("password")}
                 id="password"
                 type="password"
+                placeholder="password123"
                 required
                 className="focus:ring-2 focus:ring-[#F46B2E] focus:border-[#F46B2E]"
               />
@@ -91,9 +93,10 @@ export default function Homepage() {
           <CardFooter>
             <Button
               type="submit"
-              className="w-full bg-[#F46B2E] hover:bg-[#e45e23] text-white font-semibold transition-all"
+              disabled={isSubmitting}
+              className="w-full bg-[#F46B2E] hover:bg-[#e45e23] text-white font-semibold transition-all disabled:opacity-60"
             >
-              Log In
+              {isSubmitting ? "Logging in..." : "Log In"}
             </Button>
           </CardFooter>
         </form>

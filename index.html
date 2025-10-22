@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Shak.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>shak</title>
   </head>
@@ -11,3 +11,208 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+<!-- html savings plan file -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHAK · Savings Plan</title>
+<style>
+  :root{
+    --accent:#ff6a00; /* orange */
+    --accent-700:#e45f00;
+    --text:#111;
+    --muted:#666;
+    --border:#e6e6e6;
+    --card:#ffffff;
+    --bg:#ffffff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif}
+  header{position:sticky;top:0;background:#fffccf00}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;gap:10px;align-items:center}
+  .logo{width:28px;height:28px;border-radius:8px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:800}
+  .h1{font-weight:850;font-size:40px;margin:18px 0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+  .row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .muted{color:var(--muted)}
+  .btn{border:1px solid var(--border);background:#fff;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-700);border-color:var(--accent-700)}
+  .btn.ghost:hover{border-color:#cfcfcf}
+  .actions{display:flex;gap:10px;justify-content:flex-end}
+  label.switch{display:flex;align-items:center;gap:12px;margin:10px 0}
+  input[type="checkbox"]{width:18px;height:18px}
+  .section-title{font-size:18px;font-weight:800;margin:0 0 8px}
+
+  /* ORANGE SLIDER */
+  .slider-wrap{margin:14px 0 6px}
+  input[type="range"]{
+    -webkit-appearance:none;width:100%;height:12px;background:transparent;
+  }
+  input[type="range"]::-webkit-slider-runnable-track{
+    height:12px;background:linear-gradient(90deg,var(--accent) var(--value,0%), #e9ecef var(--value,0%));
+    border-radius:999px;border:1px solid var(--border);
+  }
+  input[type="range"]::-moz-range-track{
+    height:12px;background:linear-gradient(90deg,var(--accent) var(--value,0%), #e9ecef var(--value,0%));
+    border-radius:999px;border:1px solid var(--border);
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+    background:var(--accent);border:0;margin-top:-6px;box-shadow:0 3px 8px rgba(0,0,0,.18);
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--accent);border:0;box-shadow:0 3px 8px rgba(0,0,0,.18);
+  }
+  .pill{border:1px solid var(--border);border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}
+  .kpi{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .kpi .box{border:1px solid var(--border);border-radius:12px;padding:12px 14px;min-width:160px}
+  .help{font-size:12px;color:var(--muted)}
+  .spacer{height:10px}
+  @media (max-width: 880px){ .grid{grid-template-columns:1fr} .h1{font-size:32px} }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">$</div><strong>shak</strong></div>
+    <button class="btn" onclick="history.back()">← Back to Home</button>
+  </div>
+  <h1 class="h1">Savings Plan</h1>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <section class="card">
+      <h2 class="section-title">Goal</h2>
+      <p class="muted">Use the slider to choose what <strong>percent of your monthly income</strong> to save.</p>
+
+      <div class="kpi">
+        <div class="box">
+          <div class="help">Monthly income</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span>$</span>
+            <input id="income" type="number" value="2400" min="0" step="50" style="width:120px;border:1px solid var(--border);border-radius:10px;padding:8px 10px">
+          </div>
+        </div>
+        <div class="box">
+          <div class="help">Chosen %</div>
+          <div><strong id="pctLabel">15%</strong></div>
+        </div>
+        <div class="box">
+          <div class="help">Auto-saved / month</div>
+          <div><strong id="amountLabel">$360</strong></div>
+        </div>
+      </div>
+
+      <div class="slider-wrap">
+        <input id="pct" type="range" min="0" max="50" value="15" step="1" aria-label="Savings percentage slider">
+      </div>
+      <div class="row">
+        <span class="help">0%</span>
+        <div style="flex:1"></div>
+        <span class="help">50%</span>
+      </div>
+      <div class="spacer"></div>
+      <div class="row">
+        <span class="pill"><span style="width:8px;height:8px;border-radius:999px;background:var(--accent);display:inline-block"></span> Live preview updates</span>
+        <span class="pill">Keyboard: ← → to adjust</span>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2 class="section-title">Actions</h2>
+      <label class="switch"><input type="checkbox" id="habit1"> Skip takeout this week</label>
+      <label class="switch"><input type="checkbox" id="habit2"> Set up auto-transfers</label>
+      <label class="switch"><input type="checkbox" id="habit3"> Cook at home 3× this week</label>
+      <div class="spacer"></div>
+      <button class="btn" id="addHabit">+ Add Habit</button>
+    </aside>
+  </div>
+
+  <div class="spacer"></div>
+
+  <section class="card">
+    <h2 class="section-title">Tip</h2>
+    <p class="muted">Start with a realistic number. You can always bump it up after a few weeks of wins.</p>
+    <div class="actions">
+      <button class="btn" onclick="resetForm()">Cancel</button>
+      <button class="btn primary" id="saveBtn">Save Changes</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  const pct = document.getElementById('pct');
+  const income = document.getElementById('income');
+  const pctLabel = document.getElementById('pctLabel');
+  const amountLabel = document.getElementById('amountLabel');
+
+  function fmt(num){ return num.toLocaleString(undefined,{maximumFractionDigits:0}); }
+
+  function render(){
+    // Paint orange track length
+    const val = (+pct.value - +pct.min) / (+pct.max - +pct.min) * 100;
+    pct.style.setProperty('--value', val + '%');
+
+    pctLabel.textContent = pct.value + '%';
+    const amt = Math.round((+pct.value/100) * +income.value);
+    amountLabel.textContent = '$' + fmt(amt);
+  }
+  pct.addEventListener('input', render);
+  income.addEventListener('input', render);
+  render();
+
+  // Add habit dynamically
+  document.getElementById('addHabit').addEventListener('click', () => {
+    const text = prompt('New habit (e.g., “Bring lunch 3x this week”)');
+    if(!text) return;
+    const label = document.createElement('label');
+    label.className = 'switch';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    label.appendChild(cb);
+    label.appendChild(document.createTextNode(' ' + text));
+    document.querySelector('aside.card').appendChild(label);
+  });
+
+  function resetForm(){
+    pct.value = 15;
+    income.value = 2400;
+    document.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.checked=false);
+    render();
+  }
+
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const habits = [...document.querySelectorAll('input[type=checkbox]')].map(cb=>({
+      text: cb.parentElement.textContent.trim(),
+      done: cb.checked
+    }));
+    const data = {
+      income:+income.value,
+      percent:+pct.value,
+      monthlyAmount: Math.round((+pct.value/100) * +income.value),
+      habits
+    };
+    alert('Saved!\\n\\n' + JSON.stringify(data,null,2));
+  });
+</script>
+</body>
+</html> -->
